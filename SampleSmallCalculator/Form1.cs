@@ -32,10 +32,20 @@ namespace SampleSmallCalculator
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            int intKey = (int)keyData;
-            if (intKey >= 96 && intKey <= 105) // 96 = 0, 97 = 1, ..., 105 = 9
+            if (keyData == (Keys.NumPad0 |
+                Keys.NumPad1 |
+                Keys.NumPad2 |
+                Keys.NumPad3 |
+                Keys.NumPad4 |
+                Keys.NumPad5 |
+                Keys.NumPad6 |
+                Keys.NumPad7 |
+                Keys.NumPad8 |
+                Keys.NumPad9))
             {
-                textBox1.Text = textBox1.Text + (intKey - 96).ToString();
+
+                // also not sure about the KeyEventArgs(keyData)... is it ok?
+                number_button_Click(keyData, new KeyEventArgs(keyData));
                 return true;
 
             }
